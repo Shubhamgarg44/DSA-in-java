@@ -86,12 +86,80 @@ public class binary_tree {
         }
      }
 
+     public static int countofNodes(Node root) {
+        if(root == null) {
+            return 0;
+        }
+       int leftNodes = countofNodes(root.left);
+        int rightNodes = countofNodes(root.right);
+        return leftNodes + rightNodes + 1 ;
+     }
+
+    public static int sumofNodes(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        int leftsum = sumofNodes(root.left);
+        int rightsum = sumofNodes(root.right);
+        return leftsum + rightsum + root.data ;
+    }
+
+    public static int height(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    public static int diameter(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        int leftDiameter = diameter(root.left);
+        int rightDiameter = diameter(root.right);
+        int total = height(root.left) + height(root.right) + 1;
+        return Math.max(total, Math.max(leftDiameter,
+                rightDiameter));
+    }
+
+    static class treeinfo{
+        int h;
+        int dia;
+
+        treeinfo(int h, int dia) {
+            this.h = h;
+            this.dia = dia;
+        }
+    }
+
+    public static  treeinfo dia2(Node root){
+        if(root == null) {
+            return new treeinfo(0,0);
+        }
+        treeinfo left = dia2(root.left);
+        treeinfo right = dia2(root.right);
+
+        int myH = Math.max(left.h, right.h) +1;
+
+        int dia1 = left.dia;
+        int dia2 = right.dia;
+        int dia3 = left.h + right.h +1 ;
+
+        int mydia = Math.max(Math.max(dia1, dia2), dia3);
+        treeinfo res = new treeinfo(myH,mydia);
+        return res;
+    }
+
+
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BT tree = new BT();
         Node root = tree.buildTree(nodes);
 //        System.out.println(root.data);
-        levelOrder(root);
-
+//        levelOrder(root);
+//        System.out.println( height(root));
+        System.out.println( dia2(root).dia);
     }
 }
