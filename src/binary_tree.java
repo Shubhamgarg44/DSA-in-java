@@ -142,6 +142,7 @@ public class binary_tree {
         treeinfo right = dia2(root.right);
 
         int myH = Math.max(left.h, right.h) +1;
+        int x =0;
 
         int dia1 = left.dia;
         int dia2 = right.dia;
