@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+//  making nodes
 public class binary_tree {
     static class Node {
         int data;
@@ -13,6 +14,7 @@ public class binary_tree {
         }
     }
 
+//    build tree
      static class BT{
         static int idx = -1;
          public static Node buildTree(int nodes[]) {
@@ -27,6 +29,7 @@ public class binary_tree {
          }
      }
 
+  //preeorder
      public static void preOrder(Node root) {
         if(root == null) {
             return;
@@ -36,6 +39,7 @@ public class binary_tree {
          preOrder(root.right);
      }
 
+//     inorder
      public static void inOrder(Node root) {
         if(root == null) {
             return;
@@ -45,6 +49,7 @@ public class binary_tree {
         inOrder(root.right);
      }
 
+//  postorder
      public static void postOrder(Node root) {
         if(root == null) {
             return;
@@ -55,6 +60,7 @@ public class binary_tree {
 
      }
 
+//     levelorder
      public static void levelOrder(Node root) {
         if(root == null) {
       return;
@@ -86,6 +92,7 @@ public class binary_tree {
         }
      }
 
+     // count of nodes
      public static int countofNodes(Node root) {
         if(root == null) {
             return 0;
@@ -95,6 +102,7 @@ public class binary_tree {
         return leftNodes + rightNodes + 1 ;
      }
 
+     // sum of nodes
     public static int sumofNodes(Node root) {
         if(root == null) {
             return 0;
@@ -104,6 +112,7 @@ public class binary_tree {
         return leftsum + rightsum + root.data ;
     }
 
+    // height
     public static int height(Node root) {
         if(root == null) {
             return 0;
@@ -113,6 +122,7 @@ public class binary_tree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    // diameter
     public static int diameter(Node root) {
         if(root == null) {
             return 0;
@@ -124,6 +134,7 @@ public class binary_tree {
                 rightDiameter));
     }
 
+    // tree info
     static class treeinfo{
         int h;
         int dia;
